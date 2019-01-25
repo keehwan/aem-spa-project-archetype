@@ -57,6 +57,17 @@ Depending on the use case maven can use different archetype variant (use `-Darch
 - `local` represents `~/.m2/archetype-catalog.xml`
 - `remote` represents http://repo.maven.apache.org/maven2/archetype-catalog.xml
 
+## Provided Maven profiles
+The generated maven project support different deployment profiles when running the Maven install goal `mvn install` within the reactor.
+
+Id                        | Description
+--------------------------|------------------------------
+autoInstallBundle         | Install core bundle with the maven-sling-plugin to the felix console
+autoInstallPackage        | Install the ui.content and ui.apps content package with the content-package-maven-plugin to the package manager to default author instance on localhost, port 4502. Hostname and port can be changed with the aem.host and aem.port user defined properties. 
+autoInstallPackagePublish | Install the ui.content and ui.apps content package with the content-package-maven-plugin to the package manager to default publish instance on localhost, port 4503. Hostname and port can be changed with the aem.host and aem.port user defined properties.
+
+The profile `integrationTests` is also available for the verify goal, to run the provided integration tests on the AEM instance.
+
 ## Using SPA Starter Kit Archetype
 
 Archetype `aem-spa-project-archetype` must be available locally (by cloning this repo and building it) or on artifactory.
